@@ -1,3 +1,4 @@
+let questionsCounter = 0;
 let nextQuestion = (e) => {
   e.preventDefault();
   let radoivalue = document.getElementsByTagName("input");
@@ -16,7 +17,7 @@ let questions = [
   {
     Q: "What is the full form of JS ?",
     options: ["Javascript", "Jupitor", "Jason", "Jasper"],
-    ans: 0,
+    ans: "Javascript",
   },
   {
     Q: "What is the full form of PY ?",
@@ -25,7 +26,6 @@ let questions = [
   },
 ];
 
-let questionsCounter = 0;
 let renderQuestions = () => {
   let mainDiv = document.getElementById("main");
   if (questions.length > questionsCounter) {
