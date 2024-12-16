@@ -1,18 +1,3 @@
-let questionsCounter = 0;
-let nextQuestion = (e) => {
-  e.preventDefault();
-  let radoivalue = document.getElementsByTagName("input");
-  // console.log(radoivalue);
-  for (let i = 0; i < radoivalue.length; i++) {
-    if (radoivalue[i].checked) {
-      console.log(radoivalue[i].value);
-      checkAns(radoivalue[i].value);
-    }
-  }
-  questionsCounter++;
-  renderQuestions();
-};
-
 let questions = [
   {
     Q: "What is the full form of JS ?",
@@ -24,12 +9,48 @@ let questions = [
     options: ["Python", "Parse", "Packets", "Pet"],
     ans: "Python",
   },
+  {
+    Q: "Who is made the nuclear bomb ?",
+    options: ["Elon Musk", "Batman", "Openheimer", "Albert Einstein"],
+    ans: "Openheimer",
+  },
 ];
 
+let startButton = document.getElementById("startButton");
+let restartButton = document.getElementById("restartButton");
+let questionsCounter = 0;
+let nextQuestion = (e) => {
+  e.preventDefault();
+  let radoivalue = document.getElementsByTagName("input");
+  // console.log(radoivalue);
+  let radioCheck = false;
+  for (let i = 0; i < radoivalue.length; i++) {
+    if (radoivalue[i].checked) {
+      console.log(radoivalue[i].value);
+      checkAns(radoivalue[i].value);
+      radioCheck = true;
+      break;
+    }
+  }
+  if (radioCheck == false) {
+    alert("Make sure to select an option !");
+    return;
+  }
+  questionsCounter++;
+  renderQuestions();
+};
+
+let mainDiv = document.getElementById("main");
 let renderQuestions = () => {
-  let mainDiv = document.getElementById("main");
+  if (questions.length === questionsCounter) {
+    restartButton.style.display = "block";
+  }
+
+  startButton.style.display = "none";
+
   if (questions.length > questionsCounter) {
     mainDiv.innerHTML = `
+    <h3>${score}</h3>
     <form onsubmit="nextQuestion(event)">
         <p>${questions[questionsCounter].Q}</p>
         <label for="radio-1">${questions[questionsCounter].options[0]}</label>
@@ -40,7 +61,7 @@ let renderQuestions = () => {
         <input type="radio" name="Q" id="radio-3" value="${questions[questionsCounter].options[2]}" />
         <label for="radio-4">${questions[questionsCounter].options[3]}</label>
         <input type="radio" name="Q" id="radio-4" value="${questions[questionsCounter].options[3]}" />
-        <input type="submit" />
+        <input type="submit" value="Next" />
       </form>`;
     return;
   }
@@ -54,4 +75,12 @@ let checkAns = (ans) => {
     score++;
   }
   console.log(score);
+};
+
+let restartQuestions = () => {
+  startButton.style.display = "block";
+  restartButton.style.display = "none";
+  mainDiv.innerHTML = `<p>Click Start to begin the quiz!</p>`;
+  questionsCounter = 0;
+  score = 0;
 };
