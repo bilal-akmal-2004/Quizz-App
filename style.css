@@ -1,3 +1,26 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
 #restartButton{
     display: none;
+}
+#modalAskingName{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    background-color: rgba(182, 130, 130, 0.8);
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+}
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ position: relative;
+ width: 100%;
+ height: 100vh;
 }

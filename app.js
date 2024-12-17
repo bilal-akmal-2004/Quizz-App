@@ -10,11 +10,35 @@ let questions = [
     ans: "Python",
   },
   {
-    Q: "Who is made the nuclear bomb ?",
+    Q: "Who made the nuclear bomb ?",
     options: ["Elon Musk", "Batman", "Openheimer", "Albert Einstein"],
     ans: "Openheimer",
   },
+  {
+    Q: "What is vscode full form ?",
+    options: ["Very secure code", "Visual studio code", "VS code", "None"],
+    ans: "Visual studio code",
+  },
 ];
+
+let scoreBoard = JSON.parse(localStorage.getItem("scores")) || [];
+let gettingData = () => {
+  let playerName = document.getElementById("nameOfUser").value;
+  let fatherName = document.getElementById("fatherName").value;
+  let idOfPlayer = document.getElementById("idOfUser").value;
+  let mainModalDiv = document.getElementById("modalAskingName");
+  scoreBoard = [
+    ...scoreBoard,
+    {
+      userName: playerName,
+      userScore: 0,
+      fatherName: fatherName,
+      id: idOfPlayer,
+    },
+  ];
+  localStorage.setItem("scores", JSON.stringify(scoreBoard));
+  mainModalDiv.style.display = "none";
+};
 
 let startButton = document.getElementById("startButton");
 let restartButton = document.getElementById("restartButton");
@@ -65,7 +89,13 @@ let renderQuestions = () => {
       </form>`;
     return;
   }
-  mainDiv.innerHTML = `Your score : ${score}`;
+  scoreBoard[scoreBoard.length - 1].userScore = score;
+  localStorage.setItem("scores", JSON.stringify(scoreBoard));
+  mainDiv.innerHTML = `Your score : ${score}<br>
+  <h3>Score Board !</h3>`;
+  for (let i = 0; i < scoreBoard.length; i++) {
+    mainDiv.innerHTML += ` <br>User name: ${scoreBoard[i].userName} | Score : ${scoreBoard[i].userScore}`;
+  }
 };
 
 let score = 0;
