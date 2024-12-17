@@ -21,11 +21,21 @@ let questions = [
   },
 ];
 
+let score = 0;
 let scoreBoard = JSON.parse(localStorage.getItem("scores")) || [];
 let gettingData = () => {
   let playerName = document.getElementById("nameOfUser").value;
   let fatherName = document.getElementById("fatherName").value;
   let idOfPlayer = document.getElementById("idOfUser").value;
+  if (!playerName || !fatherName || !idOfPlayer) {
+    showModal("All fields are required!");
+    return;
+  }
+  let userExists = scoreBoard.some((user) => user.id === idOfPlayer);
+  if (userExists) {
+    showModal("User ID already exists! Please retry.");
+    return;
+  }
   let mainModalDiv = document.getElementById("modalAskingName");
   scoreBoard = [
     ...scoreBoard,
@@ -43,6 +53,7 @@ let gettingData = () => {
 let startButton = document.getElementById("startButton");
 let restartButton = document.getElementById("restartButton");
 let questionsCounter = 0;
+// this to move to the nesxt question
 let nextQuestion = (e) => {
   e.preventDefault();
   let radoivalue = document.getElementsByTagName("input");
@@ -57,7 +68,7 @@ let nextQuestion = (e) => {
     }
   }
   if (radioCheck == false) {
-    alert("Make sure to select an option !");
+    showModal("Please select an option before moving to the next question!");
     return;
   }
   questionsCounter++;
@@ -65,8 +76,38 @@ let nextQuestion = (e) => {
 };
 
 let mainDiv = document.getElementById("main");
+let correctionDiv = document.getElementById("selectionCorrectionDiv");
+let timer;
+let timeLeft = 30;
+
+// this for the timer
+let startTimer = () => {
+  timeLeft = 30;
+  document.getElementById("timer").innerText = `Time Left: ${timeLeft}s`;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").innerText = `Time Left: ${timeLeft}s`;
+
+    if (timeLeft === 0) {
+      clearInterval(timer);
+      if (questionsCounter < questions.length - 1) {
+        showModal("Time's up! Moving to the next question.");
+        questionsCounter++;
+        renderQuestions();
+      } else {
+        showModal("Time's up! Quiz completed.");
+        renderQuestions();
+      }
+    }
+  }, 1000);
+};
+
+// this for renderering quesiton
 let renderQuestions = () => {
-  if (questions.length === questionsCounter) {
+  clearInterval(timer);
+
+  if (questions.length <= questionsCounter) {
     restartButton.style.display = "block";
   }
 
@@ -75,6 +116,7 @@ let renderQuestions = () => {
   if (questions.length > questionsCounter) {
     mainDiv.innerHTML = `
     <h3>${score}</h3>
+    <div id="timer">Time Left: 30s</div> <!-- Timer Display -->
     <form onsubmit="nextQuestion(event)">
         <p>${questions[questionsCounter].Q}</p>
         <label for="radio-1">${questions[questionsCounter].options[0]}</label>
@@ -87,8 +129,11 @@ let renderQuestions = () => {
         <input type="radio" name="Q" id="radio-4" value="${questions[questionsCounter].options[3]}" />
         <input type="submit" value="Next" />
       </form>`;
+
+    startTimer();
     return;
   }
+
   scoreBoard[scoreBoard.length - 1].userScore = score;
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
   mainDiv.innerHTML = `Your score : ${score}<br>
@@ -98,7 +143,8 @@ let renderQuestions = () => {
   }
 };
 
-let score = 0;
+// this is for the checing answer is correct or no
+
 let checkAns = (ans) => {
   if (questions[questionsCounter].ans === ans) {
     console.log("User selected the rigth answer ");
@@ -107,10 +153,22 @@ let checkAns = (ans) => {
   console.log(score);
 };
 
+// this is for the restart question
 let restartQuestions = () => {
+  clearInterval(timer);
   startButton.style.display = "block";
   restartButton.style.display = "none";
   mainDiv.innerHTML = `<p>Click Start to begin the quiz!</p>`;
   questionsCounter = 0;
   score = 0;
+};
+
+// here is the code for the pop pup messages
+let showModal = (message) => {
+  document.getElementById("modalMessage").innerText = message;
+  document.getElementById("popupModal").style.display = "block";
+};
+
+let closeModal = () => {
+  document.getElementById("popupModal").style.display = "none";
 };

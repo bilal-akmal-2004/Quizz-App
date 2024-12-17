@@ -20,11 +20,20 @@
 
       <div>
         <button id="startButton" onclick="renderQuestions()">Start</button>
-        <button id="restartButton" onclick="restartQuestions()">Restart</button>
-        <div id="main"><p>Click Start to begin the quiz!</p></div>
+        <button id="restartButton" onclick="restartQuestions()">Retry</button>
+        <div id="main">
+          <p>Click Start to begin the quiz!</p>
+          <div id="timer"></div>
+        </div>
       </div>
     </div>
 
+    <div id="popupModal" class="modal">
+      <div class="modal-content">
+        <p id="modalMessage">Message goes here</p>
+        <button onclick="closeModal()">OK</button>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
