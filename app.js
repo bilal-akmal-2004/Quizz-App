@@ -97,6 +97,7 @@ let startTimer = () => {
         renderQuestions();
       } else {
         showModal("Time's up! Quiz completed.");
+        questionsCounter++;
         renderQuestions();
       }
     }
