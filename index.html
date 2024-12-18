@@ -3,37 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz App</title>
+    <title>Modern Quiz App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="main-container">
-      <div id="modalAskingName">
-        <label for="nameOfUser">User name: </label>
-        <input type="text" id="nameOfUser" />
-        <label for="fatherName">Father name : </label>
-        <input type="text" id="fatherName" />
-        <label for="idOfUser">Id : </label>
-        <input type="text" id="idOfUser" />
-        <button onclick="gettingData()">Save Data !</button>
+      <div id="modalAskingName" class="form-modal">
+        <h2>User Details</h2>
+        <label for="nameOfUser">User Name:</label>
+        <input type="text" id="nameOfUser" placeholder="Enter your name" />
+        <label for="fatherName">Father's Name:</label>
+        <input
+          type="text"
+          id="fatherName"
+          placeholder="Enter your father's name"
+        />
+        <label for="idOfUser">ID:</label>
+        <input type="text" id="idOfUser" placeholder="Enter your ID" />
+        <button id="saveData" class="btn" onclick="gettingData()">
+          Save Data
+        </button>
       </div>
 
-      <div>
-        <button id="startButton" onclick="renderQuestions()">Start</button>
-        <button id="restartButton" onclick="restartQuestions()">Retry</button>
+      <div class="quiz-container">
+        <h1>Welcome to the Quiz!</h1>
+        <button
+          id="startButton"
+          class="btn btn-primary"
+          onclick="renderQuestions()"
+        >
+          Start
+        </button>
+        <button
+          id="restartButton"
+          class="btn btn-secondary"
+          onclick="restartQuestions()"
+        >
+          Retry
+        </button>
         <div id="main">
-          <p>Click Start to begin the quiz!</p>
+          <p>Click "Start" to begin the quiz!</p>
           <div id="timer"></div>
         </div>
       </div>
     </div>
 
+    <!-- Modal for Pop-Up Messages -->
     <div id="popupModal" class="modal">
       <div class="modal-content">
-        <p id="modalMessage">Message goes here</p>
-        <button onclick="closeModal()">OK</button>
+        <p id="modalMessage"></p>
+        <button class="btn btn-primary" onclick="closeModal()">OK</button>
       </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
