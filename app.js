@@ -104,7 +104,7 @@ let startTimer = () => {
   }, 1000);
 };
 
-// this for renderering quesiton
+// this for renderering quesiton// Render questions with a completion bar
 let renderQuestions = () => {
   clearInterval(timer);
 
@@ -115,8 +115,13 @@ let renderQuestions = () => {
   startButton.style.display = "none";
 
   if (questions.length > questionsCounter) {
+    // Calculate completion percentage
+    let completionPercentage = Math.round(
+      ((questionsCounter + 1) / questions.length) * 100
+    );
+
     mainDiv.innerHTML = `
-    <h3>${score}</h3>
+    <h3>Score: ${score}</h3>
     <div id="timer">Time Left: 30s</div> <!-- Timer Display -->
     <form onsubmit="nextQuestion(event)">
         <p>${questions[questionsCounter].Q}</p>
@@ -128,13 +133,18 @@ let renderQuestions = () => {
         <input type="radio" name="Q" id="radio-3" value="${questions[questionsCounter].options[2]}" />
         <label for="radio-4">${questions[questionsCounter].options[3]}</label>
         <input type="radio" name="Q" id="radio-4" value="${questions[questionsCounter].options[3]}" />
-        <input type="submit" value="Next" />
-      </form>`;
+        <input id="nextInputButton" type="submit" value="Next" />
+    </form>
+    <div id="completionBarContainer">
+        <div id="completionBar" style="width: ${completionPercentage}%;"></div>
+    </div>
+    `;
 
     startTimer();
     return;
   }
 
+  // If quiz is over
   scoreBoard[scoreBoard.length - 1].userScore = score;
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
   mainDiv.innerHTML = `Your score : ${score}<br>
