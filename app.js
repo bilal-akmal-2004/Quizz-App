@@ -189,12 +189,12 @@ let renderQuestions = () => {
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
   mainDiv.innerHTML = `Your result : ${Math.round(
     (score / questions.length) * 100
-  )}%<br>
+  )}% | Correct answers: ${score}/${questions.length}<br>
   <h3>Score Board !</h3>`;
   for (let i = 0; i < scoreBoard.length; i++) {
-    mainDiv.innerHTML += ` <br>User name: ${
+    mainDiv.innerHTML += ` <br>Name: ${
       scoreBoard[i].userName
-    } | Percentage : ${Math.round(
+    } | Percentage: ${Math.round(
       (scoreBoard[i].userScore / questions.length) * 100
     )}%`;
   }
@@ -214,7 +214,7 @@ let checkAns = (ans) => {
 let restartQuestions = () => {
   clearInterval(timer);
   mainDiv.classList.remove("overFlowScroll");
-  quizContainer.style.height = "65%";
+  quizContainer.style.height = "70%";
   startButton.style.display = "block";
   restartButton.style.display = "none";
   checkAnswers.style.display = "none";
