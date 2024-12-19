@@ -1,3 +1,4 @@
+
 let questions = [
   {
     Q: "What is the full form of JS ?",
@@ -19,6 +20,131 @@ let questions = [
     options: ["Very secure code", "Visual studio code", "VS code", "None"],
     ans: "Visual studio code",
   },
+  {
+    Q: "What is the full form of CSS ?",
+    options: ["Style Sheets", "Cascading Style Sheets", "Consistent Style Sheets", "Cascading Sheets",],
+    ans: "Cascading Style Sheets",
+  },
+  {
+    Q: "What is the full form of HTML ?",
+    options: ["Horizontaltext Markup Language", "Hightext Markup Language", "Hyper Markup Language", "Hypertext Markup Language",],
+    ans: "Hypertext Markup Language",
+  },
+  {
+    Q: "What is the full form of C++ ?",
+    options: ["C++", "C+", "C+++", "Code++",],
+    ans: "C++",
+  },
+  {
+    Q: "JavaScript is a _______ language ?",
+    options: ["Programming", "Scripting", "Both", "None",],
+    ans: "Scripting",
+  },
+  {
+    Q: "JavaScript is case _______ ?",
+    options: ["Sensitive", "Insensitive", "Both", "None",],
+    ans: "Sensitive",
+  },
+  {
+    Q: "JavaScript is used for _______ ?",
+    options: ["Client-side", "Server-side", "Both", "None",],
+    ans: "Client-side",
+  },
+  {
+    Q: "In JavaScript, what is a variable ?",
+    options: ["A function", "A value", "A function and a value", "None",],
+    ans: "A value",
+  },
+  {
+    Q: "In what year was JavaScript invented ?",
+    options: ["1995", "1996", "1997", "1998",],
+    ans: "1995",
+  },
+  {
+    Q: "In JavaScript, what is a function ?",
+    options: ["A function", "A value", "A function and a value", "None",],
+    ans : "A function",
+  },
+  {
+    Q: "Add two numbers using JavaScript ?",
+    options: ["sum = num1 + num2", "sum = num1 - num2", "sum = num1 * num2", "sum = num1 / num2",],
+    ans: "sum = num1 + num2",
+  },
+  {
+    Q: "In JavaScript, what is a loop ?",
+    options: ["A function", "A value", "A function and a value", "None",],
+    ans: "None of the above",
+  },
+  {
+    Q: "Explain the difference between var and let in JavaScript?",
+    options: [
+      "var is a global variable, let is a local variable",
+      "var is a local variable, let is a global variable",
+      "var is a local variable, let is a local variable",
+      "var is a global variable, let is a global variable",
+    ],
+    ans: "var is a global variable, let is a local variable",   
+  },
+  {
+    Q: "ECMAScript is ?",
+    options: [
+      "A programming language",
+      "A specification",
+      "A standard",
+      "None of the above",
+    ],
+    ans: "A standard",
+  },
+  {
+    Q: "How do you create a function in JavaScript?",
+    options: [
+      "function myFunction()",
+      "function = myFunction()",
+      "function:myFunction()",
+      "None of the above",
+    ],
+    ans: "function myFunction()",
+  },
+  {
+    Q: "How do you create if statement in JavaScript?",
+    options: [
+      "if (condition) { ... }",
+      "if condition { ... }",
+      "if (condition) { ... } else { ... }",
+      "None of the above",
+    ],
+    ans: "if (condition) { ... }",
+  },
+  {
+    Q: "How do you create a for loop in JavaScript?",
+    options: [
+      "for (i = 0; i < 5; i++) { ... }",
+      "for (i = 0; i <= 5; i++) { ... }",
+      "for (i = 0; i < 5; i++) { ... } else { ... }",
+      "None of the above",
+    ],
+    ans: "for (i = 0; i < 5; i++) { ... }",
+  },
+  {
+    Q: "How do you create a variable in JavaScript?",
+    options: [
+      "var x = 5;",
+      "let x = 5;",
+      "const x = 5;",
+      "None of the above",
+    ],
+    ans: "var x = 5;",
+  },
+  {
+    Q: "How to add a comment in JavaScript?",
+    options: [
+      "# This is a comment",
+      "// This is a comment",
+      "/* This is a comment */",
+      "None of the above",
+    ],
+    ans: "// This is a comment",
+  }
 ];
 
 let score = 0;
