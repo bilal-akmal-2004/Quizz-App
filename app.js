@@ -1,4 +1,3 @@
-
 let questions = [
   {
     Q: "What is the full form of JS ?",
@@ -20,132 +19,143 @@ let questions = [
     options: ["Very secure code", "Visual studio code", "VS code", "None"],
     ans: "Visual studio code",
   },
-  {
-    Q: "What is the full form of CSS ?",
-    options: ["Style Sheets", "Cascading Style Sheets", "Consistent Style Sheets", "Cascading Sheets",],
-    ans: "Cascading Style Sheets",
-  },
-  {
-    Q: "What is the full form of HTML ?",
-    options: ["Horizontaltext Markup Language", "Hightext Markup Language", "Hyper Markup Language", "Hypertext Markup Language",],
-    ans: "Hypertext Markup Language",
-  },
-  {
-    Q: "What is the full form of C++ ?",
-    options: ["C++", "C+", "C+++", "Code++",],
-    ans: "C++",
-  },
-  {
-    Q: "JavaScript is a _______ language ?",
-    options: ["Programming", "Scripting", "Both", "None",],
-    ans: "Scripting",
-  },
-  {
-    Q: "JavaScript is case _______ ?",
-    options: ["Sensitive", "Insensitive", "Both", "None",],
-    ans: "Sensitive",
-  },
-  {
-    Q: "JavaScript is used for _______ ?",
-    options: ["Client-side", "Server-side", "Both", "None",],
-    ans: "Client-side",
-  },
-  {
-    Q: "In JavaScript, what is a variable ?",
-    options: ["A function", "A value", "A function and a value", "None",],
-    ans: "A value",
-  },
-  {
-    Q: "In what year was JavaScript invented ?",
-    options: ["1995", "1996", "1997", "1998",],
-    ans: "1995",
-  },
-  {
-    Q: "In JavaScript, what is a function ?",
-    options: ["A function", "A value", "A function and a value", "None",],
-    ans : "A function",
-  },
-  {
-    Q: "Add two numbers using JavaScript ?",
-    options: ["sum = num1 + num2", "sum = num1 - num2", "sum = num1 * num2", "sum = num1 / num2",],
-    ans: "sum = num1 + num2",
-  },
-  {
-    Q: "In JavaScript, what is a loop ?",
-    options: ["A function", "A value", "A function and a value", "None",],
-    ans: "None of the above",
-  },
-  {
-    Q: "Explain the difference between var and let in JavaScript?",
-    options: [
-      "var is a global variable, let is a local variable",
-      "var is a local variable, let is a global variable",
-      "var is a local variable, let is a local variable",
-      "var is a global variable, let is a global variable",
-    ],
-    ans: "var is a global variable, let is a local variable",   
-  },
-  {
-    Q: "ECMAScript is ?",
-    options: [
-      "A programming language",
-      "A specification",
-      "A standard",
-      "None of the above",
-    ],
-    ans: "A standard",
-  },
-  {
-    Q: "How do you create a function in JavaScript?",
-    options: [
-      "function myFunction()",
-      "function = myFunction()",
-      "function:myFunction()",
-      "None of the above",
-    ],
-    ans: "function myFunction()",
-  },
-  {
-    Q: "How do you create if statement in JavaScript?",
-    options: [
-      "if (condition) { ... }",
-      "if condition { ... }",
-      "if (condition) { ... } else { ... }",
-      "None of the above",
-    ],
-    ans: "if (condition) { ... }",
-  },
-  {
-    Q: "How do you create a for loop in JavaScript?",
-    options: [
-      "for (i = 0; i < 5; i++) { ... }",
-      "for (i = 0; i <= 5; i++) { ... }",
-      "for (i = 0; i < 5; i++) { ... } else { ... }",
-      "None of the above",
-    ],
-    ans: "for (i = 0; i < 5; i++) { ... }",
-  },
-  {
-    Q: "How do you create a variable in JavaScript?",
-    options: [
-      "var x = 5;",
-      "let x = 5;",
-      "const x = 5;",
-      "None of the above",
-    ],
-    ans: "var x = 5;",
-  },
-  {
-    Q: "How to add a comment in JavaScript?",
-    options: [
-      "# This is a comment",
-      "// This is a comment",
-      "/* This is a comment */",
-      "None of the above",
-    ],
-    ans: "// This is a comment",
-  }
 ];
+//   {
+//     Q: "What is the full form of CSS ?",
+//     options: [
+//       "Style Sheets",
+//       "Cascading Style Sheets",
+//       "Consistent Style Sheets",
+//       "Cascading Sheets",
+//     ],
+//     ans: "Cascading Style Sheets",
+//   },
+//   {
+//     Q: "What is the full form of HTML ?",
+//     options: [
+//       "Horizontaltext Markup Language",
+//       "Hightext Markup Language",
+//       "Hyper Markup Language",
+//       "Hypertext Markup Language",
+//     ],
+//     ans: "Hypertext Markup Language",
+//   },
+//   {
+//     Q: "What is the full form of C++ ?",
+//     options: ["C++", "C+", "C+++", "Code++"],
+//     ans: "C++",
+//   },
+//   {
+//     Q: "JavaScript is a _______ language ?",
+//     options: ["Programming", "Scripting", "Both", "None"],
+//     ans: "Scripting",
+//   },
+//   {
+//     Q: "JavaScript is case _______ ?",
+//     options: ["Sensitive", "Insensitive", "Both", "None"],
+//     ans: "Sensitive",
+//   },
+//   {
+//     Q: "JavaScript is used for _______ ?",
+//     options: ["Client-side", "Server-side", "Both", "None"],
+//     ans: "Client-side",
+//   },
+//   {
+//     Q: "In JavaScript, what is a variable ?",
+//     options: ["A function", "A value", "A function and a value", "None"],
+//     ans: "A value",
+//   },
+//   {
+//     Q: "In what year was JavaScript invented ?",
+//     options: ["1995", "1996", "1997", "1998"],
+//     ans: "1995",
+//   },
+//   {
+//     Q: "In JavaScript, what is a function ?",
+//     options: ["A function", "A value", "A function and a value", "None"],
+//     ans: "A function",
+//   },
+//   {
+//     Q: "Add two numbers using JavaScript ?",
+//     options: [
+//       "sum = num1 + num2",
+//       "sum = num1 - num2",
+//       "sum = num1 * num2",
+//       "sum = num1 / num2",
+//     ],
+//     ans: "sum = num1 + num2",
+//   },
+//   {
+//     Q: "In JavaScript, what is a loop ?",
+//     options: ["A function", "A value", "A function and a value", "None"],
+//     ans: "None of the above",
+//   },
+//   {
+//     Q: "Explain the difference between var and let in JavaScript?",
+//     options: [
+//       "var is a global variable, let is a local variable",
+//       "var is a local variable, let is a global variable",
+//       "var is a local variable, let is a local variable",
+//       "var is a global variable, let is a global variable",
+//     ],
+//     ans: "var is a global variable, let is a local variable",
+//   },
+//   {
+//     Q: "ECMAScript is ?",
+//     options: [
+//       "A programming language",
+//       "A specification",
+//       "A standard",
+//       "None of the above",
+//     ],
+//     ans: "A standard",
+//   },
+//   {
+//     Q: "How do you create a function in JavaScript?",
+//     options: [
+//       "function myFunction()",
+//       "function = myFunction()",
+//       "function:myFunction()",
+//       "None of the above",
+//     ],
+//     ans: "function myFunction()",
+//   },
+//   {
+//     Q: "How do you create if statement in JavaScript?",
+//     options: [
+//       "if (condition) { ... }",
+//       "if condition { ... }",
+//       "if (condition) { ... } else { ... }",
+//       "None of the above",
+//     ],
+//     ans: "if (condition) { ... }",
+//   },
+//   {
+//     Q: "How do you create a for loop in JavaScript?",
+//     options: [
+//       "for (i = 0; i < 5; i++) { ... }",
+//       "for (i = 0; i <= 5; i++) { ... }",
+//       "for (i = 0; i < 5; i++) { ... } else { ... }",
+//       "None of the above",
+//     ],
+//     ans: "for (i = 0; i < 5; i++) { ... }",
+//   },
+//   {
+//     Q: "How do you create a variable in JavaScript?",
+//     options: ["var x = 5;", "let x = 5;", "const x = 5;", "None of the above"],
+//     ans: "var x = 5;",
+//   },
+//   {
+//     Q: "How to add a comment in JavaScript?",
+//     options: [
+//       "# This is a comment",
+//       "// This is a comment",
+//       "/* This is a comment */",
+//       "None of the above",
+//     ],
+//     ans: "// This is a comment",
+//   },
+// ];
 
 let score = 0;
 let scoreBoard = JSON.parse(localStorage.getItem("scores")) || [];
@@ -178,6 +188,7 @@ let gettingData = () => {
 
 let startButton = document.getElementById("startButton");
 let restartButton = document.getElementById("restartButton");
+let checkAnswers = document.getElementById("checkButton");
 let questionsCounter = 0;
 // this to move to the nesxt question
 let nextQuestion = (e) => {
@@ -230,15 +241,12 @@ let startTimer = () => {
   }, 1000);
 };
 
-// this for renderering quesiton// Render questions with a completion bar
+// this for renderering quesiton
 let renderQuestions = () => {
   clearInterval(timer);
 
-  if (questions.length <= questionsCounter) {
-    restartButton.style.display = "block";
-  }
-
   startButton.style.display = "none";
+  checkButton.style.display = "none";
 
   if (questions.length > questionsCounter) {
     // Calculate completion percentage
@@ -271,12 +279,20 @@ let renderQuestions = () => {
   }
 
   // If quiz is over
+  restartButton.style.display = "block";
+  checkButton.style.display = "block";
   scoreBoard[scoreBoard.length - 1].userScore = score;
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
-  mainDiv.innerHTML = `Your score : ${score}<br>
+  mainDiv.innerHTML = `Your result : ${Math.round(
+    (score / questions.length) * 100
+  )}%<br>
   <h3>Score Board !</h3>`;
   for (let i = 0; i < scoreBoard.length; i++) {
-    mainDiv.innerHTML += ` <br>User name: ${scoreBoard[i].userName} | Score : ${scoreBoard[i].userScore}`;
+    mainDiv.innerHTML += ` <br>User name: ${
+      scoreBoard[i].userName
+    } | Percentage : ${Math.round(
+      (scoreBoard[i].userScore / questions.length) * 100
+    )}%`;
   }
 };
 
@@ -293,8 +309,11 @@ let checkAns = (ans) => {
 // this is for the restart question
 let restartQuestions = () => {
   clearInterval(timer);
+  mainDiv.classList.remove("overFlowScroll");
+  quizContainer.style.height = "65%";
   startButton.style.display = "block";
   restartButton.style.display = "none";
+  checkAnswers.style.display = "none";
   mainDiv.innerHTML = `<p>Click Start to begin the quiz!</p>`;
   questionsCounter = 0;
   score = 0;
@@ -308,4 +327,23 @@ let showModal = (message) => {
 
 let closeModal = () => {
   document.getElementById("popupModal").style.display = "none";
+};
+
+// this is to check answer after the completion of quiz
+
+let quizContainer = document.getElementById("quiz-container");
+let checkAnswersOptions = () => {
+  mainDiv.innerHTML = ``;
+  for (let i = 0; i < questions.length; i++) {
+    quizContainer.style.height = "500px";
+    mainDiv.classList.add("overFlowScroll");
+    mainDiv.innerHTML += `
+<h3>${questions[i].Q}</h3>
+<h4>1: ${questions[i].options[0]}</h4>
+<h4>2: ${questions[i].options[1]}</h4>
+<h4>3: ${questions[i].options[2]}</h4>
+<h4>3: ${questions[i].options[3]}</h4>
+<h4 style="color: green; text-decoration: underline;">Right Answer : ${questions[i].ans}</h3>`;
+  }
+  checkAnswers.style.display = "none";
 };

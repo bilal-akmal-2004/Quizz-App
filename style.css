@@ -63,7 +63,7 @@ box-sizing: border-box;
 
 body {
 font-family: "Poppins", sans-serif;
-background: linear-gradient(135deg, #4caf50, #1e90ff);
+background: linear-gradient(135deg, #00ffc4, #2a4675, #a7c2ef);
 color: #333;
 display: flex;
 justify-content: center;
@@ -85,6 +85,12 @@ background-color:#45a049 ;
 #nextInputButton:hover{
 color: rgb(255, 255, 255);
 background-color:#ff0000 ;
+}
+
+/* check button */
+#checkButton{
+  display: none;
+  margin-top: 10px;
 }
 .btn {
 padding: 10px 20px;
@@ -120,7 +126,7 @@ max-width: 600px;
 margin: auto;
 }
 
-.quiz-container {
+#quiz-container {
 width: 700px;
 display: flex;
 flex-direction: column;
@@ -133,6 +139,10 @@ text-align: center;
 
 #main {
 margin-top: 20px;
+}
+
+.overFlowScroll{
+  overflow: scroll;
 }
 
 /* Timer */
@@ -225,6 +235,6 @@ overflow: hidden;
 #completionBar {
 height: 100%;
 width: 0;
-background: linear-gradient(90deg, #4caf50, #1e90ff);
+background: linear-gradient(90deg, #4caf50,rgb(68, 190, 255), #1e90ff);
 transition: width 0.5s ease-in-out;
 }
