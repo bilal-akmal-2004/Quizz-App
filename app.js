@@ -187,11 +187,31 @@ let renderQuestions = () => {
   checkButton.style.display = "block";
   scoreBoard[scoreBoard.length - 1].userScore = score;
   localStorage.setItem("scores", JSON.stringify(scoreBoard));
+  // sorting og the hiehsset scoreer here
+  let highestScoreArrayOfObject = [];
+
+  // Manual sorting using nested loops
+  for (let i = 0; i < scoreBoard.length; i++) {
+    for (let j = i + 1; j < scoreBoard.length; j++) {
+      // Compare scores first (higher score comes first)
+      if (
+        scoreBoard[i].userScore < scoreBoard[j].userScore || // If the current score is less
+        (scoreBoard[i].userScore === scoreBoard[j].userScore &&
+          scoreBoard[i].id > scoreBoard[j].id) // If scores are equal, compare IDs
+      ) {
+        // Swap the objects
+        let temp = scoreBoard[i];
+        scoreBoard[i] = scoreBoard[j];
+        scoreBoard[j] = temp;
+      }
+    }
+  }
+  console.log(scoreBoard);
   mainDiv.innerHTML = `Your result : ${Math.round(
     (score / questions.length) * 100
   )}% | Correct answers: ${score}/${questions.length}<br>
-  <h3>Score Board !</h3>`;
-  for (let i = 0; i < scoreBoard.length; i++) {
+  <h3>Top Scores !</h3>`;
+  for (let i = 0; i < 3; i++) {
     mainDiv.innerHTML += ` <br>Name: ${
       scoreBoard[i].userName
     } | Percentage: ${Math.round(
@@ -214,7 +234,7 @@ let checkAns = (ans) => {
 let restartQuestions = () => {
   clearInterval(timer);
   mainDiv.classList.remove("overFlowScroll");
-  quizContainer.style.height = "70%";
+  quizContainer.style.height = "";
   startButton.style.display = "block";
   restartButton.style.display = "none";
   checkAnswers.style.display = "none";
