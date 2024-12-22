@@ -61,6 +61,8 @@ let questions = [
   },
 ];
 
+let totalQuestions = questions.length;
+let answersData = [];
 let score = 0;
 let scoreBoard = JSON.parse(localStorage.getItem("scores")) || [];
 let gettingData = () => {
@@ -103,6 +105,7 @@ let nextQuestion = (e) => {
   for (let i = 0; i < radoivalue.length; i++) {
     if (radoivalue[i].checked) {
       console.log(radoivalue[i].value);
+      answersData.push(radoivalue[i].value);
       checkAns(radoivalue[i].value);
       radioCheck = true;
       break;
@@ -134,11 +137,13 @@ let startTimer = () => {
       clearInterval(timer);
       if (questionsCounter < questions.length - 1) {
         showModal("Time's up! Moving to the next question.");
+        answersData.push("");
         questionsCounter++;
         renderQuestions();
       } else {
         showModal("Time's up! Quiz completed.");
         questionsCounter++;
+        answersData.push("");
         renderQuestions();
       }
     }
@@ -160,17 +165,38 @@ let renderQuestions = () => {
 
     mainDiv.innerHTML = `
     <h3>Correct answers: ${score}/${questions.length}</h3>
-    <div id="timer">Time Left: 30s</div> <!-- Timer Display -->
+    <h3>Questions left: ${totalQuestions--}</h3>
+    <div id="timer"></div>
     <form onsubmit="nextQuestion(event)">
         <p>${questions[questionsCounter].Q}</p>
+        <div class="labels_And_Options">
+        <input type="radio" name="Q" id="radio-1" value="${
+          questions[questionsCounter].options[0]
+        }" />
         <label for="radio-1">${questions[questionsCounter].options[0]}</label>
-        <input type="radio" name="Q" id="radio-1" value="${questions[questionsCounter].options[0]}" />
-        <label for="radio-2">${questions[questionsCounter].options[1]}</label>
-        <input type="radio" name="Q" id="radio-2" value="${questions[questionsCounter].options[1]}" />
+        </div>
+        
+        <div class="labels_And_Options">
+        <input type="radio" name="Q" id="radio-2" value="${
+          questions[questionsCounter].options[1]
+        }" />
+         <label for="radio-2">${questions[questionsCounter].options[1]}</label>
+        </div>
+       
+        <div class="labels_And_Options">
+        <input type="radio" name="Q" id="radio-3" value="${
+          questions[questionsCounter].options[2]
+        }" />
         <label for="radio-3">${questions[questionsCounter].options[2]}</label>
-        <input type="radio" name="Q" id="radio-3" value="${questions[questionsCounter].options[2]}" />
+        </div>
+        
+        <div class="labels_And_Options">
+         <input type="radio" name="Q" id="radio-4" value="${
+           questions[questionsCounter].options[3]
+         }" />
         <label for="radio-4">${questions[questionsCounter].options[3]}</label>
-        <input type="radio" name="Q" id="radio-4" value="${questions[questionsCounter].options[3]}" />
+        </div>
+        
         <input id="nextInputButton" type="submit" value="Next" />
     </form>
     <div id="completionBarContainer">
@@ -211,12 +237,16 @@ let renderQuestions = () => {
     (score / questions.length) * 100
   )}% | Correct answers: ${score}/${questions.length}<br>
   <h3>Top Scores !</h3>`;
-  for (let i = 0; i < 3; i++) {
-    mainDiv.innerHTML += ` <br>Name: ${
-      scoreBoard[i].userName
-    } | Percentage: ${Math.round(
-      (scoreBoard[i].userScore / questions.length) * 100
-    )}%`;
+  // Displaying top 3 scorers
+  for (let i = 0; i < 3 && i < scoreBoard.length; i++) {
+    if (scoreBoard[i].userName) {
+      // Ensure 'userName' exists
+      mainDiv.innerHTML += ` <br>Name: ${
+        scoreBoard[i].userName
+      } | Percentage: ${Math.round(
+        (scoreBoard[i].userScore / questions.length) * 100
+      )}%`;
+    }
   }
 };
 
@@ -227,11 +257,12 @@ let checkAns = (ans) => {
     console.log("User selected the rigth answer ");
     score++;
   }
-  console.log(score);
 };
 
 // this is for the restart question
 let restartQuestions = () => {
+  answersData = [];
+  totalQuestions = questions.length;
   clearInterval(timer);
   mainDiv.classList.remove("overFlowScroll");
   quizContainer.style.height = "";
@@ -257,17 +288,39 @@ let closeModal = () => {
 
 let quizContainer = document.getElementById("quiz-container");
 let checkAnswersOptions = () => {
-  mainDiv.innerHTML = ``;
-  for (let i = 0; i < questions.length; i++) {
-    quizContainer.style.height = "500px";
-    mainDiv.classList.add("overFlowScroll");
+  mainDiv.innerHTML = ""; // Clear the main div
+  quizContainer.style.height = "500px";
+  mainDiv.classList.add("overFlowScroll");
+  questions.forEach((question, i) => {
+    let userAnswer = answersData[i]; // The user's selected answer
+    let correctAnswer = question.ans;
+
+    // Generate the options with proper highlighting
+    // options: ["Javascript", "Jupitor", "Jason", "Jasper"],
+    let optionsHTML = question.options
+      .map((option) => {
+        if (option === correctAnswer) {
+          // Correct answer - highlight in green
+          return `<h4 style="color: green;">✔ ${option}</h4>`;
+        } else if (option === userAnswer) {
+          // Wrong answer - highlight in red
+          return `<h4 style="color: red;">✘ ${option}</h4>`;
+        } else {
+          // Other options - no special styling
+          return `<h4>- ${option}</h4>`;
+        }
+      })
+      .join("");
+    if (userAnswer === "") {
+      optionsHTML += `<h4 style="color: red;">User didn't select.</h4>`;
+    }
+    // Append the question and options to the main div
     mainDiv.innerHTML += `
-<h3>${questions[i].Q}</h3>
-<h4>1: ${questions[i].options[0]}</h4>
-<h4>2: ${questions[i].options[1]}</h4>
-<h4>3: ${questions[i].options[2]}</h4>
-<h4>3: ${questions[i].options[3]}</h4>
-<h4 style="color: green; text-decoration: underline;">Right Answer : ${questions[i].ans}</h3>`;
-  }
+      <div>
+        <p><strong>Q${i + 1}: ${question.Q}</strong></p>
+        ${optionsHTML}
+      </div>
+    `;
+  });
   checkAnswers.style.display = "none";
 };

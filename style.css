@@ -8,10 +8,12 @@ button:hover {
   display: none;
 }
 #saveData{
-background-color: #63d468;
+  color: white;
+  background: linear-gradient(135deg, #00ffc4, #2a4675, #a7c2ef);
 }
 #saveData:hover{
-background-color: #11c11a;
+  color: rgb(0, 0, 0);
+  background: linear-gradient(135deg, #7be394, #06ad5d, #04cb96);
 }
 #modalAskingName{
   display: flex;
@@ -205,6 +207,19 @@ to {
 }
 
 /* Styling labels for better appearance */
+.labels_And_Options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.labels_And_Options label{
+  width: 115%;
+}
+.labels_And_Options input{
+  width: 5%;
+  height: 20px;
+}
 form label {
 display: block;
 margin: 10px 0;
@@ -238,3 +253,6 @@ width: 0;
 background: linear-gradient(90deg, #4caf50,rgb(68, 190, 255), #1e90ff);
 transition: width 0.5s ease-in-out;
 }
+
+/* opton cheching  */
+
