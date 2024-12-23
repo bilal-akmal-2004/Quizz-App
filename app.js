@@ -1,7 +1,7 @@
 let questions = [
   {
     Q: "What is the full form of JS ?",
-    options: ["Javascript", "Jupitor", "Jason", "Jasper"],
+    options: ["Javascript", "Jupitor"],
     ans: "Javascript",
   },
   {
@@ -11,7 +11,7 @@ let questions = [
   },
   {
     Q: "Who made the nuclear bomb ?",
-    options: ["Elon Musk", "Batman", "Openheimer", "Albert Einstein"],
+    options: ["Elon Musk", "Batman", "Openheimer"],
     ans: "Openheimer",
   },
   {
@@ -162,48 +162,33 @@ let renderQuestions = () => {
     let completionPercentage = Math.round(
       ((questionsCounter + 1) / questions.length) * 100
     );
+    //  this for the rendeing questions accordinly
+    let optionsHtml = "";
+    questions[questionsCounter].options.forEach((option, index) => {
+      optionsHtml += `
+        <div class="labels_And_Options">
+          <input type="radio" name="Q" id="radio-${
+            index + 1
+          }" value="${option}" />
+          <label for="radio-${index + 1}">${option}</label>
+        </div>
+      `;
+    });
 
+    // Render the question and options
     mainDiv.innerHTML = `
-    <h3>Correct answers: ${score}/${questions.length}</h3>
-    <h3>Questions left: ${totalQuestions--}</h3>
-    <div id="timer"></div>
-    <form onsubmit="nextQuestion(event)">
-        <p>${questions[questionsCounter].Q}</p>
-        <div class="labels_And_Options">
-        <input type="radio" name="Q" id="radio-1" value="${
-          questions[questionsCounter].options[0]
-        }" />
-        <label for="radio-1">${questions[questionsCounter].options[0]}</label>
-        </div>
-        
-        <div class="labels_And_Options">
-        <input type="radio" name="Q" id="radio-2" value="${
-          questions[questionsCounter].options[1]
-        }" />
-         <label for="radio-2">${questions[questionsCounter].options[1]}</label>
-        </div>
-       
-        <div class="labels_And_Options">
-        <input type="radio" name="Q" id="radio-3" value="${
-          questions[questionsCounter].options[2]
-        }" />
-        <label for="radio-3">${questions[questionsCounter].options[2]}</label>
-        </div>
-        
-        <div class="labels_And_Options">
-         <input type="radio" name="Q" id="radio-4" value="${
-           questions[questionsCounter].options[3]
-         }" />
-        <label for="radio-4">${questions[questionsCounter].options[3]}</label>
-        </div>
-        
-        <input id="nextInputButton" type="submit" value="Next" />
-    </form>
-    <div id="completionBarContainer">
-        <div id="completionBar" style="width: ${completionPercentage}%;"></div>
-    </div>
+      <h3>Correct answers: ${score}/${questions.length}</h3>
+      <h3>Questions left: ${totalQuestions--}</h3>
+      <div id="timer"></div>
+      <form onsubmit="nextQuestion(event)">
+          <p>${questions[questionsCounter].Q}</p>
+          ${optionsHtml}
+          <input id="nextInputButton" type="submit" value="Next" />
+      </form>
+      <div id="completionBarContainer">
+          <div id="completionBar" style="width: ${completionPercentage}%;"></div>
+      </div>
     `;
-
     startTimer();
     return;
   }
