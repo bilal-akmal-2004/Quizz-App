@@ -20,14 +20,9 @@ let questions = [
     ans: "Visual studio code",
   },
   {
-    Q: "What is the full form of CSS ?",
-    options: [
-      "Style Sheets",
-      "Cascading Style Sheets",
-      "Consistent Style Sheets",
-      "Cascading Sheets",
-    ],
-    ans: "Cascading Style Sheets",
+    Q: "Does mcqs contains true/false ?",
+    options: ["Yes", "No"],
+    ans: "No",
   },
   {
     Q: "What is the full form of HTML ?",
@@ -61,11 +56,43 @@ let questions = [
   },
 ];
 
+// validation area
+let validationForInputs = (e) => {
+  let target = e.target;
+  let value = target.value;
+
+  // Validation for playerName
+  if (target.id === "nameOfUser" && value.length < 3) {
+    target.nextElementSibling.innerHTML =
+      "Name must be at least 3 characters long.";
+  } else if (target.id === "nameOfUser") {
+    target.nextElementSibling.innerHTML = "";
+  }
+
+  // Validation for fatherName
+  if (target.id === "fatherName" && value.length < 3) {
+    target.nextElementSibling.innerHTML =
+      "Father's name must be at least 3 characters long.";
+  } else if (target.id === "fatherName") {
+    target.nextElementSibling.innerHTML = "";
+  }
+
+  // Validation for idOfPlayer
+  if (target.id === "idOfUser") {
+    if (!value.startsWith("123-")) {
+      target.nextElementSibling.innerHTML = "ID must start with '123-'.";
+    } else {
+      target.nextElementSibling.innerHTML = "";
+    }
+  }
+};
+
 let totalQuestions = questions.length;
 let answersData = [];
 let score = 0;
 let scoreBoard = JSON.parse(localStorage.getItem("scores")) || [];
 let gettingData = () => {
+  quizContainer.style.display = "flex";
   let playerName = document.getElementById("nameOfUser").value;
   let fatherName = document.getElementById("fatherName").value;
   let idOfPlayer = document.getElementById("idOfUser").value;
@@ -272,6 +299,7 @@ let closeModal = () => {
 // this is to check answer after the completion of quiz
 
 let quizContainer = document.getElementById("quiz-container");
+quizContainer.style.display = "none";
 let checkAnswersOptions = () => {
   mainDiv.innerHTML = ""; // Clear the main div
   quizContainer.style.height = "500px";

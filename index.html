@@ -14,16 +14,30 @@
     <div class="main-container">
       <div id="modalAskingName" class="form-modal">
         <h2>User Details</h2>
-        <label for="nameOfUser">User Name:</label>
-        <input type="text" id="nameOfUser" placeholder="Enter your name" />
-        <label for="fatherName">Father's Name:</label>
+        <label class="user-Data-Css" for="nameOfUser">User Name:</label>
+        <input
+          type="text"
+          id="nameOfUser"
+          placeholder="Enter your name"
+          oninput="validationForInputs(event)"
+        />
+        <span></span>
+        <label class="user-Data-Css" for="fatherName">Father's Name:</label>
         <input
           type="text"
           id="fatherName"
           placeholder="Enter your father's name"
+          oninput="validationForInputs(event)"
         />
-        <label for="idOfUser">ID:</label>
-        <input type="text" id="idOfUser" placeholder="Enter your ID" />
+        <span></span>
+        <label class="user-Data-Css" for="idOfUser">ID:</label>
+        <input
+          type="text"
+          id="idOfUser"
+          placeholder="Enter your ID"
+          oninput="validationForInputs(event)"
+        />
+        <span></span>
         <button id="saveData" class="btn" onclick="gettingData()">
           Save Data
         </button>

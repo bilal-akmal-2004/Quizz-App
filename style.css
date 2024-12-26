@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins&display=swap');
 button:hover {
   background-color: #4caf50;
   color: white;
@@ -9,11 +9,11 @@ button:hover {
 }
 #saveData{
   color: white;
-  background: linear-gradient(135deg, #00ffc4, #2a4675, #a7c2ef);
+  background: linear-gradient(135deg, #62ff77, #317100, #9fd995);
 }
 #saveData:hover{
   color: rgb(0, 0, 0);
-  background: linear-gradient(135deg, #7be394, #06ad5d, #04cb96);
+  background: linear-gradient(135deg, #7be394, #5ec857, #5bce7a);
 }
 #modalAskingName{
   display: flex;
@@ -23,7 +23,7 @@ button:hover {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 30px;
   width: 100%;
-  height: 370px;
+  height: 430px;
   z-index: 1;
 }
 .main-container{
@@ -64,8 +64,10 @@ box-sizing: border-box;
 }
 
 body {
-font-family: "Poppins", sans-serif;
-background: linear-gradient(135deg, #00ffc4, #2a4675, #a7c2ef);
+  font-family: "Montserrat", serif;
+    background-image: url(pics/questionMark.jpg);
+background-position: 560px;
+/* background: linear-gradient(135deg, #00ffc4, #2a4675, #a7c2ef); */
 color: #333;
 display: flex;
 justify-content: center;
@@ -135,7 +137,7 @@ flex-direction: column;
 background: white;
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 text-align: center;
 }
 
@@ -216,6 +218,9 @@ to {
 .labels_And_Options label{
   width: 115%;
 }
+.labels_And_Options label:hover{
+  background: linear-gradient(90deg, #5a5a5a,rgb(227, 225, 225), #000000);
+}
 .labels_And_Options input{
   width: 5%;
   height: 20px;
@@ -254,5 +259,8 @@ background: linear-gradient(90deg, #4caf50,rgb(68, 190, 255), #1e90ff);
 transition: width 0.5s ease-in-out;
 }
 
-/* opton cheching  */
-
+/* user data css */
+.user-Data-Css{
+  font-size: 17px;
+  font-weight: bold;
+}
