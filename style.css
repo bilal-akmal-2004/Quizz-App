@@ -91,6 +91,18 @@ color: rgb(255, 255, 255);
 background-color:#ff0000 ;
 }
 
+/* score board buttons  */
+#scoreBoardButton{
+  display: none;
+  margin-top: 10px;
+  background-color: rgb(180, 180, 177)  ;
+  color: black;
+}
+
+#scoreBoardButton:hover{
+  background-color: rgb(159, 159, 157)  ;
+}
+
 /* check button */
 #checkButton{
   display: none;
